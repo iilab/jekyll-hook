@@ -48,9 +48,9 @@ app.post('/hooks/jekyll/*', function(req, res) {
         var params = [];
 
         // Parse webhook data for internal variables
-        data.repo = data.repository.name;
-        data.branch = data.ref.replace('refs/heads/', '');
-        data.owner = data.repository.owner.name;
+        data.repo = data.repository ? data.repository.name : null;
+        data.branch = data.ref ? data.ref.replace('refs/heads/', '') : null;
+        data.owner = data.repository? data.repository.owner.name : null;
 
         // End early if not permitted account
         if (config.accounts.indexOf(data.owner) === -1) {
