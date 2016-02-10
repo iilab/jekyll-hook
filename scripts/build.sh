@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
-
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 # This script is meant to be run automatically
 # as part of the jekyll-hook application.
 # https://github.com/developmentseed/jekyll-hook
@@ -25,5 +26,8 @@ cd -
 
 # Run jekyll
 cd $source
-jekyll build -s $source -d $build
+pwd
+whoami
+jekyll --version
+jekyll build --source $source --destination $build
 cd -
